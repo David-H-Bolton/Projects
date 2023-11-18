@@ -1,0 +1,69 @@
+; variables
+	define Data $40
+	define Flag $30
+	define Count 6
+; code
+	LDX #$01    ; Initialise data
+	LDA #Count
+	STA Data		 
+	LDA #$0F ; 1st value
+	STA Data,x
+	LDA #$02 ; 2nd value
+	INX
+	STA Data,x		 
+	LDA #$05 ; 3rd value
+	INX
+	STA Data,x			 
+	LDA #$0A ; 4th value
+	INX
+	STA Data,X			 
+	LDA #$07 ; 5th value
+	INX
+	STA Data,X	
+	LDA #$04 ; 6th value
+	INX
+	STA Data,X			 
+	 ; Now show the values
+	LDY Data
+	LDX #$01
+SHOW1:	LDA Data,X
+	STA $200,X
+	INX
+	DEY
+	BNE SHOW1
+	; Now sort the values
+SORT8:  LDX #$00     
+	STX Flag     ;Set Flag to 0
+	LDA Data     ; Fetch Count
+	TAY          ; Transfer to Y
+	INX          ; X is now 1- 1st element in list
+	DEY          ; Dec Count in y
+NXTEL:  LDA Data,X   ; Fetch Element
+	INX
+	CMP Data,X   ;Larger than next element? 
+	BCC CHKEND
+	BEQ CHKEND
+		      ; Yes. Swap Elements
+	PHA           ; Save Value on stack.
+	LDA Data,X    ; Get Next value            
+	DEX           ; AND STORE IT in previous byte
+	STA Data,X
+	INX
+	PLA
+	STA Data,X
+	LDA #$FF      ;Set flag
+	STA Flag
+CHKEND: DEY       ;Reached the end of the list?
+	BNE NXTEL     ;No. Fetch next element
+	BIT Flag      ;YES. Flag still off?
+	BMI SORT8     ;No. Go through the list again
+ ; Now show the values again two lines below
+	LDY Data
+	LDX #$01
+SHOW2:	LDA Data,X
+	STA $240,X
+	INX
+	DEY
+	BNE SHOW2
+    RTS           ; Finished all sorted
+; end of program   
