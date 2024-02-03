@@ -1,0 +1,1 @@
+030000001008000001e5000010010000,NEXT SNES Controller2,platform:Linux,a:b2,b:b1,x:b3,y:b0,back:b8,start:b9,leftshoulder:b4,rightshoulder:b5,dpup:-a1,dpdown:+a1,dpleft:-a0,dpright:+a0,
