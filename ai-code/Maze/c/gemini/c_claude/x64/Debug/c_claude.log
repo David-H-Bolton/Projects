@@ -1,0 +1,4 @@
+﻿  c_claude.c
+D:\development\dice.com\2025\June2025\Code\1\c_meta\c_claude.c(1,30): warning C4081: expected 'newline'; found ';'
+D:\development\dice.com\2025\June2025\Code\1\c_meta\c_claude.c(158,11): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+  c_claude.vcxproj -> D:\development\dice.com\2025\June2025\Code\1\c_meta\x64\Debug\c_claude.exe
